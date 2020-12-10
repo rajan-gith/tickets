@@ -37,6 +37,17 @@
           </li>
           <% end %>
         </nav>
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key == 'alert' ? 'warning' : key %> alert-dismissible">
+            <button type="button" class="close close-alert" data-dismiss="alert">&times;</button>
+            <ul>
+              <li>
+                <div class="flash"><%= value %></div>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+
         <%= yield %>
       </div>
     </div>

@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @show.name %>
+
+  <%= form_for @ticket, url: create_ticket_booking_path(id: @show.id), method: :post do |f| %>
+    <% if !current_user %>
+      <label for="">Email</label>
+      <%= email_field 'user', 'email' %>
+    <% end %>
+    <br>
+    <% (1..100).each_with_index do |i| %>
+      <%= check_box_tag :seats, (i), @show.reserved_seats.include?(i), disabled: @show.reserved_seats.include?(i),  :name => 'ticket[seats][]' %>🍿 (S.no: <%= i.to_s.rjust(2, "0") %> )
+      <% if ((i % 10) == 0) %>
+        <br>
+      <% end %>
+    <% end %>
+    <%= f.submit %>
+  <% end %>
+
+</p>

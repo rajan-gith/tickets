@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :role
+  has_many :tickets
 
   scope :admins, -> () { where(role: Role.find_by(name: 'admin')) }
   scope :users, -> () { where(role: Role.find_by(name: 'user')) }

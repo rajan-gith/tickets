@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+  get 'tickets/book/:id' , to: 'tickets#book', as: 'book_ticket'
+  post 'tickets/book/:id' , to: 'tickets#create', as: 'create_ticket_booking'
 end

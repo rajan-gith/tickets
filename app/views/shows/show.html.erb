@@ -3,7 +3,24 @@
 <p>
   <strong>Name:</strong>
   <%= @show.name %>
+  <br>
+  <strong>Timing:</strong>
+  <%= @show.timing %>
 </p>
-
-<%= link_to 'Edit', edit_show_path(@show) %> |
+<div class="">
+  <% (1..100).each_with_index do |i| %>
+    <%= check_box_tag :seats, (i), @show.reserved_seats.include?(i), disabled: true,  :name => 'ticket[seats][]' %>🍿 (S.no: <%= i.to_s.rjust(2, "0") %> )
+    <% if ((i % 10) == 0) %>
+      <br>
+    <% end %>
+  <% end %>
+</div>
+<% if current_user && current_user.admin? %>
+  <%= link_to 'Edit', edit_show_path(@show) %>
+<% else %>
+  <%= link_to 'Continue Booking', book_ticket_path(@show) %>
+  <br>
+  <br>
+<% end %>
+|
 <%= link_to 'Back', shows_path %>
