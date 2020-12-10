@@ -1,5 +1,7 @@
 class ShowsController < ApplicationController
-  before_action :set_show, only: [:show, :edit, :update, :destroy]
+  before_action :set_show, only: [:edit, :update, :destroy]
+  before_action :set_show_with_tickets, only: [:show]
+  skip_before_action :authenticate_user!, only: [:show, :index]
 
   # GET /shows
   # GET /shows.json
@@ -65,6 +67,10 @@ class ShowsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_show
       @show = Show.find(params[:id])
+    end
+
+    def set_show_with_tickets
+      @show = Show.includes(:tickets).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
