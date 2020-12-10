@@ -8,4 +8,8 @@ class User < ApplicationRecord
 
   scope :admins, -> () { where(role: Role.find_by(name: 'admin')) }
   scope :users, -> () { where(role: Role.find_by(name: 'user')) }
+
+  def admin?
+    self.role.name == 'admin'
+  end
 end
