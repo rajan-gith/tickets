@@ -1,10 +1,10 @@
-<%= form_with(model: ticket, local: true) do |form| %>
-  <% if ticket.errors.any? %>
+<%= form_with(model: show, local: true) do |form| %>
+  <% if show.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+      <h2><%= pluralize(show.errors.count, "error") %> prohibited this show from being saved:</h2>
 
       <ul>
-      <% ticket.errors.full_messages.each do |message| %>
+      <% show.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -16,9 +16,11 @@
     <%= form.text_field :name %>
     <br>
     <%= form.label :timing %>
-    <%= form.select :timing, :collection => Ticket.timings.keys.to_a %>
+
+    <%= form.select :timing, :collection => Show.timings.keys.to_a %>
+
   </div>
-<br>
+
   <div class="actions">
     <%= form.submit %>
   </div>
