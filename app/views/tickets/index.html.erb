@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Tickets</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.show.name %></td>
+        <td><%= link_to 'Show', ticket_shows_path(id: ticket.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Back', shows_path %>

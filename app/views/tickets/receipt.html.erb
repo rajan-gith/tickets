@@ -1,0 +1,11 @@
+<strong>Show Name</strong>: <%= @ticket.show.name %>
+<br>
+<strong>Timings</strong>: <%= @ticket.show.timing %>
+<br>
+<strong>User email</strong>: <%= @ticket.user.email %>
+<br>
+<strong>Seats number</strong>: <%= @ticket.seats.join(", ") %>
+<br>
+<strong>Amount</strong>: <%= @ticket.amount %>
+<br>
+<%= link_to 'Back', tickets_list_path %>
