@@ -16,7 +16,7 @@ class Ticket < ApplicationRecord
   def self.seats_price(seat_number)
     if (seat_number >= 1 && seat_number <= 30)
       150
-    elsif
+    elsif (seat_number >= 31 && seat_number <= 70)
       200
     else
       300
