@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Reports for</h3>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Show Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shows.each do |show| %>
+      <tr>
+        <td><%= show.name %></td>
+        <td><%= show.timing %></td>
+        <td><%= link_to 'View Report', view_reports_path(id: show.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

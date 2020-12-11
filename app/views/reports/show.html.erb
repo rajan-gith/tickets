@@ -1,0 +1,22 @@
+<%= link_to "Download", view_reports_path(id: @show.id, format: :csv) %>
+<table class="table ">
+  <thead>
+    <tr>
+      <th>ticket no. </th>
+      <th>ticket user email </th>
+      <th>ticket seats </th>
+      <th>ticket amount </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @show.tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.id %></td>
+        <td><%= ticket.user.email %></td>
+        <td><%= ticket.seats.join(", ") %></td>
+        <td><%= ticket.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

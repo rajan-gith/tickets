@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   post 'tickets/book/:id' , to: 'tickets#create', as: 'create_ticket_booking'
   get 'tickets/receipt/:id' , to: 'tickets#receipt', as: 'ticket_shows'
   get 'tickets' , to: 'tickets#index', as: 'tickets_list'
+
+  get 'reports', to: 'reports#index', as: 'reports'
+  get 'reports/show/:id', to: 'reports#show', as: 'view_reports'
 end
