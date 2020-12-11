@@ -28,6 +28,11 @@
           <li role="presentation">
             <%= link_to 'Logout', destroy_user_session_path , method: 'delete' %>
           </li>
+            <% unless current_user.admin? %>
+              <li role="presentation">
+                <%= link_to 'My Tickets', tickets_list_path %>
+              </li>
+            <% end %>
           <% else %>
           <li role="presentation">
             <a href="<%= new_user_session_path %>" >Login</a>
