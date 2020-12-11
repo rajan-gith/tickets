@@ -1,6 +1,6 @@
 class Ticket < ApplicationRecord
-  belongs_to :show
-  belongs_to :user
+  belongs_to :show, optional: false
+  belongs_to :user, optional: false
 
   before_save :update_price
 
