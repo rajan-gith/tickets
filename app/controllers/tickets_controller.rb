@@ -2,6 +2,10 @@ class TicketsController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :set_show, only: [:book, :create]
 
+  def index
+    @tickets = current_user.tickets
+  end
+
   def book
     @ticket = Ticket.new
   end
@@ -26,6 +30,9 @@ class TicketsController < ApplicationController
     end
   end
 
+  def receipt
+    @ticket = Ticket.find_by(id: params[:id])
+  end
   private
 
   def set_show
