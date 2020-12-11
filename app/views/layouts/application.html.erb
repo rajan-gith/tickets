@@ -24,6 +24,9 @@
     <div class="jumbotron">
       <div class="container">
         <nav class="nav nav-tabs">
+          <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="<%= root_path %>">Home</a></li>
+          </ul>
           <% if current_user %>
           <li role="presentation">
             <%= link_to 'Logout', destroy_user_session_path , method: 'delete' %>
@@ -31,6 +34,10 @@
             <% unless current_user.admin? %>
               <li role="presentation">
                 <%= link_to 'My Tickets', tickets_list_path %>
+              </li>
+            <% else %>
+              <li role="presentation">
+                <%= link_to 'Reports', reports_path %>
               </li>
             <% end %>
           <% else %>
